@@ -10,3 +10,5 @@ kind: Kustomization
 images:
 - name: registryldcp.azurecr.io/node-api
   newTag: latest
+- name: registryldcp.azurecr.io/node-apm
+  newTag: latest
