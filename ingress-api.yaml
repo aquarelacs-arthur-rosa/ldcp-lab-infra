@@ -1,25 +1,25 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: argocd-ingress
+  name: api-ingress
   annotations:
     kubernetes.io/ingress.class: "nginx" 
     # nginx.ingress.kubernetes.io/rewrite-target: /$2
-    nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
-    cert-manager.io/cluster-issuer: letsencrypt-argocd
+    nginx.ingress.kubernetes.io/use-regex: "true"
+    cert-manager.io/cluster-issuer: letsencrypt-api
 spec:
   tls:
   - hosts:
-    - argocd.service-arthur.net
-    secretName: wildcard-argocd
+    - api.service-arthur.net
+    secretName: wildcard-api
   rules:
-  - host: argocd.service-arthur.net
+  - host: api.service-arthur.net
     http:
       paths:
       - path: /
         pathType: Prefix
         backend:
           service:
-            name: argocd-server
+            name: node-api
             port:
               number: 80
