@@ -9,4 +9,4 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 images:
 - name: registryldcp.azurecr.io/paymentexample
-  newTag: arthur
+  newTag: 2.123.4
